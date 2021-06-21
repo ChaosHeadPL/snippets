@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: eu4rs
+  labels:
+    app: eu4
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: eu4
+  template:
+    metadata:
+      labels:
+        app: eu4
+    spec:
+      containers:
+      - name: eu4
+        image: marcinszeliga/eu4
+        ports:
+        - containerPort: 5000

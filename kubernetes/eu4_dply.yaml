@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eu4
+spec:
+  selector:
+    matchLabels:
+      app: eu4
+  template:
+    metadata:
+      labels:
+        app: eu4
+    spec:
+      containers:
+      - name: eu4
+        image: marcinszeliga/eu4
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 5000
