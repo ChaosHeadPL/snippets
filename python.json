@@ -1,0 +1,136 @@
+{
+  "Open file": {
+    "prefix": "snip file open",
+    "body": [
+      "with open(\"/path/to/file\", \"r\") as file:",
+      "    print(f\"Opening {file.name} in {file.mode} mode\")",
+      "    for line in file:",
+      "        pass"
+    ],
+    "description": "Open file"
+  },
+  "Open file in chunks": {
+    "prefix": "snip file open in chunk",
+    "body": [
+      "with open(\"/path/to/file\", \"r\") as file:",
+      "    chunk_size = 100",
+      "    # read only chunk size:",
+      "    file_content = file.read(chunk_size)",
+      "    while len(file_content) > 0:",
+      "        # print file with separator (\"*\") between chunks:",
+      "        print(file_content, end=\"*\")",
+      "        file_content = file.read(chunk_size)"
+    ],
+    "description": "Open file in chunks"
+  },
+  "Copy files": {
+    "prefix": "snip files copy",
+    "body": [
+      "with open(\"/path/to/file\", \"rb\") as r_file:",
+      "    with open(\"/path/to/file_backup\", \"wb\") as w_file:",
+      "        for line in r_file:",
+      "            w_file.write(line)"
+    ],
+    "description": "Copy files"
+  },
+  "Copy images": {
+    "prefix": "snip images copy",
+    "body": [
+      "with open(\"file.png\", \"rb\") as r_file:",
+      "    with open(\"file_backup.png\", \"wb\") as w_file:",
+      "        chunk_size = 4096",
+      "        r_file_chunk = r_file.read(chunk_size)",
+      "        while len(r_file_chunk) > 0:",
+      "            w_file.write(r_file_chunk)",
+      "            r_file_chunk = r_file.read(chunk_size)"
+    ],
+    "description": "Copy images"
+  },
+  "Read csv": {
+    "prefix": "snip csv read",
+    "body": [
+      "with open(\"file.csv\", \"r\") as csv_file:",
+      "    csv_reader = csv.reader(csv_file)"
+    ],
+    "description": "Read csv"
+  },
+  "Copy csv": {
+    "prefix": "snip csv copy",
+    "body": [
+      "with open(\"file.csv\", \"r\") as csv_file:",
+      "    csv_reader = csv.reader(csv_file)",
+      "",
+      "    with open(\"file_backup.csv\", \"w\") as csv_file_backup:",
+      "        csv_writer = csv.writer(csv_file_backup, delimiter=\"|\")",
+      "",
+      "    for line in csv_reader:",
+      "        csv_writer.writerow(line)"
+    ],
+    "description": "Copy csv"
+  },
+  "Read csv as list": {
+    "prefix": "snip csv read to list",
+    "body": [
+      "with open(\"file.csv\", \"r\") as csv_file:",
+      "    data = []",
+      "    csv_reader = csv.reader(csv_file)",
+      "    for line in csv_reader:",
+      "        data.append(line.split(\"|\"))"
+    ],
+    "description": "Read csv as list"
+  },
+  "Read csv as dict": {
+    "prefix": "snip csv read to dict",
+    "body": [
+      "with open(\"file.csv\", \"r\") as csv_file:",
+      "    data = []",
+      "    csv_reader = csv.DictReader(csv_file)",
+      "    for line in csv_reader:",
+      "        # line is OrderedDict type",
+      "        data.append(line)"
+    ],
+    "description": "Read csv as dict"
+  },
+  "Read json from file": {
+    "prefix": "snip json read from file",
+    "body": [
+      "with open(\"file.json\", \"r\") as json_file:",
+      "    data = json.load(json_file)"
+    ],
+    "description": "Read json from file"
+  },
+  "Dump json to file": {
+    "prefix": "snip json dump to file",
+    "body": [
+      "with open(\"file.json\", \"w\") as json_file:",
+      "    json.dump(data, json_file, indent=2)"
+    ],
+    "description": "Dump json to file"
+  },
+  "Create zip file": {
+    "prefix": "snip zip create",
+    "body": [
+      "with zipfile.ZipFile(\"files.zip\", \"w\", compression=zipfile.ZIP_DEFLATED) as my_zip:",
+      "    my_zip.write(\"test.txt\")",
+      "    my_zip.write(\"test.json\")"
+    ],
+    "description": "Create zip file"
+  },
+  "Extract zip file": {
+    "prefix": "snip zip extract",
+    "body": [
+      "with zipfile.ZipFile(\"files.zip\", \"r\") as my_zip:",
+      "    my_zip.extractall()",
+      "    # extract single file:",
+      "    my_zip.extract(\"test.txt\")"
+    ],
+    "description": "Extract zip file"
+  },
+  "BASE_DIR": {
+    "prefix": "snip BASE_DIR",
+    "body": [
+      "BASE_DIR = os.path.dirname(__file__)"
+    ],
+    "description": "BASE_DIR"
+  }
+}

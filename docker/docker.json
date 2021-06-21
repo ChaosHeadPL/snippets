@@ -1,0 +1,9 @@
+{
+    "Dockerfile pip": {
+        "prefix": "snip dockerfile pip",
+        "body": [
+            "RUN pip install --index-url http://odyssey.apps.csintra.net/artifactory/api/pypi/python.org/simple --trusted-host odyssey.apps.csintra.net -r ./requirements.txt"
+        ],
+        "description": "Dockerfile pip"
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "Docker build": {
+        "prefix": "snip docker build",
+        "body": [
+            "docker build -t tag_name ."
+        ],
+        "description": "Docker build"
+    },
+
+    "Docker run bash": {
+        "prefix": "snip docker run bash",
+        "body": [
+            "docker run -it image_name bash"
+        ],
+        "description": "Docker run bash"
+    }
+}
