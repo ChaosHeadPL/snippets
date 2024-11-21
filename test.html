@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Materialize Grid Layout with Overlapping Shadows</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+    .row {
+      margin: 0;
+      height: 100%;
+      display: flex;
+    }
+    .left-column {
+      width: 300px;
+      height: 100%;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+      z-index: 2;
+      position: relative;
+    }
+    .right-column {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .top-section {
+      height: 50px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      position: relative;
+    }
+    .bottom-section {
+      flex: 1;
+      padding: 50px;
+      display: block;
+    }
+    .page {
+      width: 100%;
+      background-color: #f0f0f0;
+    }
+    /* Wyłączenie formatowania Materialize dla Breadcrumbs */
+    nav {
+      background: none;
+      box-shadow: none;
+    }
+    .breadcrumb {
+      color: inherit;
+      text-decoration: none;
+      font-weight: normal;
+    }
+    .breadcrumb::after {
+      content: " > ";
+      color: inherit;
+    }
+    .breadcrumb:last-child::after {
+      content: "";
+    }
+  </style>
+</head>
+<body>
+  <div class="row">
+    <div class="col left-column teal lighten-2">
+      <!-- Left Column Content -->
+    </div>
+    <div class="right-column">
+      <div class="top-section teal lighten-4">
+        <nav>
+          <div>
+            <a href="#!" class="breadcrumb">Home</a>
+            <a href="#!" class="breadcrumb">Library</a>
+            <a href="#!" class="breadcrumb">Data</a>
+          </div>
+        </nav>
+      </div>
+      <div class="bottom-section">
+        <div class="page">
+          <!-- Page Content -->
+          <p>Treść w elemencie page dostosowuje jego wysokość automatycznie.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>
