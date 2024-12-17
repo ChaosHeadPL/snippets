@@ -1,5 +1,5 @@
 
-```
+```ini
 [SERVICE]
     Flush         5
     Daemon        Off
@@ -30,4 +30,21 @@
     Host          127.0.0.1
     Port          4317
     Resource      service.name="my_app_monitoring"
+```
+
+```ini
+[PARSER]
+    Name          process_count_parser
+    Format        regex
+    Regex         ^(?<process_count>\d+)$
+```
+
+---
+
+```ini
+[OUTPUT]
+    Name          file
+    Match         my_app_process_count
+    Path          /tmp/fluentbit_output.log
+    Format        json_lines
 ```
