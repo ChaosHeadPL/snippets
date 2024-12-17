@@ -1,3 +1,5 @@
+
+```
 [SERVICE]
     Flush         5
     Daemon        Off
@@ -28,3 +30,4 @@
     Host          127.0.0.1
     Port          4317
     Resource      service.name="my_app_monitoring"
+```
