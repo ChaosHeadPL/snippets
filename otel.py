@@ -23,13 +23,6 @@ metrics.set_meter_provider(provider)
 # Pobierz Meter
 meter = metrics.get_meter(__name__)
 
-# Instrument do rejestrowania PID jako metryki
-pid_gauge = meter.create_observable_gauge(
-    name="process_pid",
-    unit="1",
-    description="Process ID"
-)
-
 # Przykładowy JSON
 json_data = '''
 {
@@ -56,7 +49,12 @@ def report_pid_callback(observer):
         }
     )
 
-# Rejestracja funkcji zwrotnej
-pid_gauge.add_callback(report_pid_callback)
+# Instrument do rejestrowania PID jako metryki
+pid_gauge = meter.create_observable_gauge(
+    name="process_pid",
+    unit="1",
+    description="Process ID",
+    callbacks=[report_pid_callback]  # Rejestracja funkcji callback
+)
 
 print("Metryki zostały zgłoszone.")
