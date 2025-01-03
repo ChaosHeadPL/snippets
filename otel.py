@@ -38,7 +38,7 @@ json_data = '''
 data = json.loads(json_data)
 
 # Funkcja do zgłaszania metryki PID
-def report_pid_callback():
+def report_pid_callback(callback_options):
     return [
         (data["pid"], {  # Wartość metryki
             "pmem": data["pmem"],
