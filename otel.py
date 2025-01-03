@@ -4,6 +4,7 @@ from opentelemetry.sdk.metrics.export import PeriodicExportingMetricReader
 from opentelemetry.exporter.otlp.proto.grpc.metric_exporter import OTLPMetricExporter
 from opentelemetry.sdk.resources import Resource
 from opentelemetry import metrics
+from opentelemetry.sdk.metrics import Observation
 
 # Konfiguracja zasobów (Resource)
 resource = Resource.create(attributes={
@@ -38,16 +39,18 @@ json_data = '''
 data = json.loads(json_data)
 
 # Funkcja do zgłaszania metryki PID
-def report_pid_callback(observer):
-    observer.observe(
-        value=data["pid"],
-        attributes={
-            "pmem": data["pmem"],
-            "pcpu": data["pcpu"],
-            "name": data["name"],
-            "command": data["command"]
-        }
-    )
+def report_pid_callback(options):
+    return [
+        Observation(
+            value=data["pid"],
+            attributes={
+                "pmem": data["pmem"],
+                "pcpu": data["pcpu"],
+                "name": data["name"],
+                "command": data["command"]
+            }
+        )
+    ]
 
 # Instrument do rejestrowania PID jako metryki
 pid_gauge = meter.create_observable_gauge(
